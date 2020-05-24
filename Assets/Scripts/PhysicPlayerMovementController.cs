@@ -41,9 +41,7 @@ public class PhysicPlayerMovementController : PlayerMovementController
             // Rotate if new direction
             if (velocity.magnitude == 0 || Vector3.Angle(velocity, worldDirection) != 0)
             {
-                //// Rotate up to direction (limited by amplitudeRotation according to axes x and y)
-                //Vector3 targetRotation = (Vector3.forward / 2) - new Vector3(amplitudeRotation * worldDirection.x, amplitudeRotation * 0.5f * worldDirection.y, 0);
-                //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(targetRotation), rotateSpeed * Time.deltaTime);
+                // Rotate up to direction
                 Rotate(worldDirection);
             }
         }
