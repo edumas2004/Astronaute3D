@@ -72,11 +72,13 @@
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\HaloController.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
+    <Compile Include="Assets\Scripts\JetpackController.cs" />
     <Compile Include="Assets\Scripts\KineticPlayerMovementController.cs" />
     <Compile Include="Assets\Scripts\NPCController.cs" />
     <Compile Include="Assets\Scripts\PhysicPlayerMovementController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerMovementController.cs" />
+    <Compile Include="Assets\Scripts\PropulsorController.cs" />
     <Compile Include="Assets\Scripts\StarshipController.cs" />
     <Compile Include="Assets\Scripts\TargetCameraController.cs" />
     <Compile Include="Assets\Scripts\test\NewPlayableAsset.cs" />

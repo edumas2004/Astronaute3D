@@ -4,9 +4,12 @@ using UnityEngine;
 
 public abstract class PlayerMovementController : AbstractMovementController
 {
+    public JetpackController jetpackController;
+
     internal override void Move(Vector3 direction)
     {
         base.Move(direction);
+        jetpackController.Activate(direction);
     }
 
     protected void Rotate(Vector3 direction)

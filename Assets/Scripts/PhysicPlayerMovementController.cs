@@ -22,6 +22,9 @@ public class PhysicPlayerMovementController : PlayerMovementController
     internal override void Move(Vector3 worldDirection)
     {
         Debug.Log("movedByForce : " + worldDirection);
+
+        base.Move(worldDirection);
+
         Vector3 velocity = gameObject.GetComponent<Rigidbody>().velocity;
 
         Debug.Log("-- movedByForce speed : " + velocity.magnitude);
