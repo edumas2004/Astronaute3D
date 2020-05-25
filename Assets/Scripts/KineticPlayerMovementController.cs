@@ -9,7 +9,7 @@ public class KineticPlayerMovementController : PlayerMovementController
         return MonoBehaviourUpdateCallback.UPDATE;
     }
 
-    internal override void Move(Vector3 worldDirection)
+    protected override void DoMove(Vector3 worldDirection)
     {
         Debug.Log("movedByKinetic : " + worldDirection);
         base.Move(worldDirection);

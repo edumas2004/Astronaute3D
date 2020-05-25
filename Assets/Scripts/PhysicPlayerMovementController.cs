@@ -19,7 +19,7 @@ public class PhysicPlayerMovementController : PlayerMovementController
         return  MonoBehaviourUpdateCallback.FIXED_UPDATE;
     }
 
-    internal override void Move(Vector3 worldDirection)
+    protected override void DoMove(Vector3 worldDirection)
     {
         Debug.Log("movedByForce : " + worldDirection);
 

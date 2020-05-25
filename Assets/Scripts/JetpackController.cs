@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JetpackController : MonoBehaviour
+public class JetpackController : MonoBehaviour, IMovementObserver
 {
+    public AbstractMovementController movementController;
+
     public GameObject propulsor_BUR; 
     public GameObject propulsor_BUL;
     public GameObject propulsor_BDR;
@@ -13,41 +15,55 @@ public class JetpackController : MonoBehaviour
     public GameObject propulsor_FDR;
     public GameObject propulsor_FDL;
 
-    public void Activate(Vector3 direction)
-    {
+    public HashSet<GameObject> propulsorToActivate = new HashSet<GameObject>();
 
+    private void Awake()
+    {
+        //movementController.AddObserver((IMovementObserver)this);
+    }
+
+    public void NotifyMovement(Vector3 direction)
+    {
         Debug.Log("JetpackController Activate " + Vector3.Dot(Vector3.up, direction));
+
+        propulsorToActivate.Clear();
 
         if (Vector3.Dot(Vector3.up, direction) > 0)
         {
-            activatePropulsor(propulsor_BDR);
-            activatePropulsor(propulsor_BDL);
-            activatePropulsor(propulsor_FUR);
-            activatePropulsor(propulsor_FUL);
+            propulsorToActivate.Add(propulsor_BDR);
+            propulsorToActivate.Add(propulsor_BDR);
+            propulsorToActivate.Add(propulsor_BDL);
+            propulsorToActivate.Add(propulsor_FUR);
+            propulsorToActivate.Add(propulsor_FUL);
         }
 
         if (Vector3.Dot(Vector3.down, direction) > 0)
         {
-            activatePropulsor(propulsor_BUR);
-            activatePropulsor(propulsor_BUL);
-            activatePropulsor(propulsor_FDR);
-            activatePropulsor(propulsor_FDL);
+            propulsorToActivate.Add(propulsor_BUR);
+            propulsorToActivate.Add(propulsor_BUL);
+            propulsorToActivate.Add(propulsor_FDR);
+            propulsorToActivate.Add(propulsor_FDL);
         }
 
         if (Vector3.Dot(Vector3.right, direction) > 0)
         {
-            activatePropulsor(propulsor_BUR);
-            activatePropulsor(propulsor_BDR);
-            activatePropulsor(propulsor_FUL);
-            activatePropulsor(propulsor_FDL);
+            propulsorToActivate.Add(propulsor_BUR);
+            propulsorToActivate.Add(propulsor_BDR);
+            propulsorToActivate.Add(propulsor_FUL);
+            propulsorToActivate.Add(propulsor_FDL);
         }
 
         if (Vector3.Dot(Vector3.left, direction) > 0)
         {
-            activatePropulsor(propulsor_BUL);
-            activatePropulsor(propulsor_BDL);
-            activatePropulsor(propulsor_FUR);
-            activatePropulsor(propulsor_FDR);
+            propulsorToActivate.Add(propulsor_BUL);
+            propulsorToActivate.Add(propulsor_BDL);
+            propulsorToActivate.Add(propulsor_FUR);
+            propulsorToActivate.Add(propulsor_FDR);
+        }
+
+        foreach(GameObject propulsor in propulsorToActivate)
+        {
+            activatePropulsor(propulsor);
         }
     }
 
@@ -59,7 +75,7 @@ public class JetpackController : MonoBehaviour
 
     private IEnumerator HideParticuleAfterSecond(GameObject propulsor)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.5f);
         propulsor.SetActive(false);
     }
 }

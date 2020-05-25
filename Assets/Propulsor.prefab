@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7648752748925284210}
   - component: {fileID: 7648752748925284213}
   m_Layer: 0
-  m_Name: Propulsor_AHG
+  m_Name: Propulsor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 0.2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
