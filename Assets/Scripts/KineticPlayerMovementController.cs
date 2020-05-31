@@ -21,16 +21,17 @@ public class KineticPlayerMovementController : PlayerMovementController
 
         if (worldDirection.magnitude > 0)
         {
-            Debug.Log("-- movedByKinetic apply world translation : " + worldDirection);
-            Vector3 localDirection = transform.InverseTransformDirection(worldDirection);
-            transform.Translate(localDirection * speed * Time.deltaTime);
-
             // Rotate if new direction
             if (velocity.magnitude == 0 || Vector3.Angle(velocity, worldDirection) != 0)
             {
                 // Rotate up to direction
                 Rotate(worldDirection);
             }
+
+            Debug.Log("-- movedByKinetic apply world translation : " + worldDirection);
+            Vector3 localDirection = transform.InverseTransformDirection(worldDirection);
+            transform.Translate(localDirection * speed * Time.deltaTime);
+
         }
     }
 }
